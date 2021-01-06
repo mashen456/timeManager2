@@ -22,9 +22,32 @@ namespace timeManager2
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+
+
+            //***********************************************************
+            //Original Bootstrap
+            //***********************************************************
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap.css",
+            //          "~/Content/site.css"));
+
+
+            //***********************************************************
+            //Alternative from https://bootswatch.com/flatly/
+            //***********************************************************
+
+            //Dark
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-darkly.css",
                       "~/Content/site.css"));
+
+            //Flat
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap-flatly.css",
+            //          "~/Content/site.css"));
+
+
+
         }
     }
 }
