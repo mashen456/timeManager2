@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -115,12 +121,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,6 +204,26 @@
     <Compile Include="Migrations\202101060547106_ApplyAnnotations1.cs" />
     <Compile Include="Migrations\202101060547106_ApplyAnnotations1.Designer.cs">
       <DependentUpon>202101060547106_ApplyAnnotations1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101061856320_test.cs" />
+    <Compile Include="Migrations\202101061856320_test.Designer.cs">
+      <DependentUpon>202101061856320_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101072227573_removedNamFroCustoe.cs" />
+    <Compile Include="Migrations\202101072227573_removedNamFroCustoe.Designer.cs">
+      <DependentUpon>202101072227573_removedNamFroCustoe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101072239426_addedOwnerIdToCompany.cs" />
+    <Compile Include="Migrations\202101072239426_addedOwnerIdToCompany.Designer.cs">
+      <DependentUpon>202101072239426_addedOwnerIdToCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101072253181_addeNULLToOweId.cs" />
+    <Compile Include="Migrations\202101072253181_addeNULLToOweId.Designer.cs">
+      <DependentUpon>202101072253181_addeNULLToOweId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101072258028_OwnerIdIntToString.cs" />
+    <Compile Include="Migrations\202101072258028_OwnerIdIntToString.Designer.cs">
+      <DependentUpon>202101072258028_OwnerIdIntToString.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -276,6 +297,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +340,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101060547106_ApplyAnnotations1.resx">
       <DependentUpon>202101060547106_ApplyAnnotations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101061856320_test.resx">
+      <DependentUpon>202101061856320_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101072227573_removedNamFroCustoe.resx">
+      <DependentUpon>202101072227573_removedNamFroCustoe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101072239426_addedOwnerIdToCompany.resx">
+      <DependentUpon>202101072239426_addedOwnerIdToCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101072253181_addeNULLToOweId.resx">
+      <DependentUpon>202101072253181_addeNULLToOweId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101072258028_OwnerIdIntToString.resx">
+      <DependentUpon>202101072258028_OwnerIdIntToString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

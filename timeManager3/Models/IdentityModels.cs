@@ -20,7 +20,8 @@ namespace timeManager3.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -31,5 +32,7 @@ namespace timeManager3.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<timeManager3.Models.Company> Companies { get; set; }
     }
 }

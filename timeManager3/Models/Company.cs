@@ -22,5 +22,8 @@ namespace timeManager3.Models
         [StringLength(255)]
         public string Country { get; set; }
 
+        public string OwnerId { get; set; }
+
+
     }
 }
