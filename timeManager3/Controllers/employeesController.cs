@@ -6,137 +6,118 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using timeManager3.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using timeManager3.Models;
 
 namespace timeManager3.Controllers
 {
-    public class CompaniesController : Controller
+    public class employeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Companies
+        // GET: employees
         public ActionResult Index()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            List<Company> companies = new List<Company>();
-
-            foreach (Company company in db.Companies.ToList())
-            {
-                if (company.OwnerId == User.Identity.GetUserId())
-                {
-                   
-                    companies.Add(company);
-                }
-                
-            }
-
-
-            return View(companies);
+            var employes = db.Employes.Include(e => e.Company);
+            return View(employes.ToList());
         }
 
-        // GET: Companies/Details/5
+        // GET: employees/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            employee employee = db.Employes.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(employee);
         }
 
-        // GET: Companies/Create
-        public ActionResult Create()
+        // GET: employees/Create
+        public ActionResult JoinByList()
         {
+            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name");
             return View();
         }
 
-        // POST: Companies/Create
+        // POST: employees/Create
         // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
         // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Address,Zip,Country,OwnerId,InvKey")] Company company)
+        public ActionResult JoinByList([Bind(Include = "Id,CompanyId,employeId")] employee employee)
         {
             if (ModelState.IsValid)
             {
-                company.InvKey = Guid.NewGuid();
-                company.OwnerId = User.Identity.GetUserId();
-                db.Companies.Add(company);
+                employee.employeId = User.Identity.GetUserId();
+                db.Employes.Add(employee);
                 db.SaveChanges();
-
-                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-                UserManager.AddToRole(User.Identity.GetUserId(), "Manager");
                 return RedirectToAction("Index");
             }
 
-            return View(company);
+            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name", employee.CompanyId);
+            return View(employee);
         }
 
-        // GET: Companies/Edit/5
+        // GET: employees/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            employee employee = db.Employes.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name", employee.CompanyId);
+            return View(employee);
         }
 
-        // POST: Companies/Edit/5
+        // POST: employees/Edit/5
         // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
         // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Address,Zip,Country,OwnerId")] Company company)
+        public ActionResult Edit([Bind(Include = "Id,CompanyId,employeId")] employee employee)
         {
             if (ModelState.IsValid)
             {
-                company.OwnerId = User.Identity.GetUserId();
-                db.Entry(company).State = EntityState.Modified;
+                db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(company);
+            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name", employee.CompanyId);
+            return View(employee);
         }
 
-        // GET: Companies/Delete/5
+        // GET: employees/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            employee employee = db.Employes.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(employee);
         }
 
-        // POST: Companies/Delete/5
+        // POST: employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Company company = db.Companies.Find(id);
-            db.Companies.Remove(company);
+            employee employee = db.Employes.Find(id);
+            db.Employes.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\employeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,11 +226,70 @@
     <Compile Include="Migrations\202101072258028_OwnerIdIntToString.Designer.cs">
       <DependentUpon>202101072258028_OwnerIdIntToString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101080014156_guidForIDCompanyModel.cs" />
+    <Compile Include="Migrations\202101080014156_guidForIDCompanyModel.Designer.cs">
+      <DependentUpon>202101080014156_guidForIDCompanyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080019521_guidKeyForIDCompanyModel.cs" />
+    <Compile Include="Migrations\202101080019521_guidKeyForIDCompanyModel.Designer.cs">
+      <DependentUpon>202101080019521_guidKeyForIDCompanyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080028101_guidKeyForIDCompanyModel2.cs" />
+    <Compile Include="Migrations\202101080028101_guidKeyForIDCompanyModel2.Designer.cs">
+      <DependentUpon>202101080028101_guidKeyForIDCompanyModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080034195_removedSomeTypes.cs" />
+    <Compile Include="Migrations\202101080034195_removedSomeTypes.Designer.cs">
+      <DependentUpon>202101080034195_removedSomeTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080041157_employetest.cs" />
+    <Compile Include="Migrations\202101080041157_employetest.Designer.cs">
+      <DependentUpon>202101080041157_employetest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080042452_employetest2.cs" />
+    <Compile Include="Migrations\202101080042452_employetest2.Designer.cs">
+      <DependentUpon>202101080042452_employetest2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080047387_employetest21.cs" />
+    <Compile Include="Migrations\202101080047387_employetest21.Designer.cs">
+      <DependentUpon>202101080047387_employetest21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080048092_employetest3.cs" />
+    <Compile Include="Migrations\202101080048092_employetest3.Designer.cs">
+      <DependentUpon>202101080048092_employetest3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080103399_employetest4.cs" />
+    <Compile Include="Migrations\202101080103399_employetest4.Designer.cs">
+      <DependentUpon>202101080103399_employetest4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080105283_employetest41.cs" />
+    <Compile Include="Migrations\202101080105283_employetest41.Designer.cs">
+      <DependentUpon>202101080105283_employetest41.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080107193_employetest5.cs" />
+    <Compile Include="Migrations\202101080107193_employetest5.Designer.cs">
+      <DependentUpon>202101080107193_employetest5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080108177_employetest51.cs" />
+    <Compile Include="Migrations\202101080108177_employetest51.Designer.cs">
+      <DependentUpon>202101080108177_employetest51.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080110308_employetest6.cs" />
+    <Compile Include="Migrations\202101080110308_employetest6.Designer.cs">
+      <DependentUpon>202101080110308_employetest6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080122085_employetest7.cs" />
+    <Compile Include="Migrations\202101080122085_employetest7.Designer.cs">
+      <DependentUpon>202101080122085_employetest7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101080124037_employetest71.cs" />
+    <Compile Include="Migrations\202101080124037_employetest71.Designer.cs">
+      <DependentUpon>202101080124037_employetest71.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerType.cs" />
+    <Compile Include="Models\employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -302,6 +362,11 @@
     <Content Include="Views\Companies\Details.cshtml" />
     <Content Include="Views\Companies\Edit.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
+    <Content Include="Views\employees\JoinByList.cshtml" />
+    <Content Include="Views\employees\Delete.cshtml" />
+    <Content Include="Views\employees\Details.cshtml" />
+    <Content Include="Views\employees\Edit.cshtml" />
+    <Content Include="Views\employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -355,6 +420,51 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101072258028_OwnerIdIntToString.resx">
       <DependentUpon>202101072258028_OwnerIdIntToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080014156_guidForIDCompanyModel.resx">
+      <DependentUpon>202101080014156_guidForIDCompanyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080019521_guidKeyForIDCompanyModel.resx">
+      <DependentUpon>202101080019521_guidKeyForIDCompanyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080028101_guidKeyForIDCompanyModel2.resx">
+      <DependentUpon>202101080028101_guidKeyForIDCompanyModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080034195_removedSomeTypes.resx">
+      <DependentUpon>202101080034195_removedSomeTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080041157_employetest.resx">
+      <DependentUpon>202101080041157_employetest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080042452_employetest2.resx">
+      <DependentUpon>202101080042452_employetest2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080047387_employetest21.resx">
+      <DependentUpon>202101080047387_employetest21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080048092_employetest3.resx">
+      <DependentUpon>202101080048092_employetest3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080103399_employetest4.resx">
+      <DependentUpon>202101080103399_employetest4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080105283_employetest41.resx">
+      <DependentUpon>202101080105283_employetest41.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080107193_employetest5.resx">
+      <DependentUpon>202101080107193_employetest5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080108177_employetest51.resx">
+      <DependentUpon>202101080108177_employetest51.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080110308_employetest6.resx">
+      <DependentUpon>202101080110308_employetest6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080122085_employetest7.resx">
+      <DependentUpon>202101080122085_employetest7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101080124037_employetest71.resx">
+      <DependentUpon>202101080124037_employetest71.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

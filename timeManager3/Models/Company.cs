@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,9 @@ namespace timeManager3.Models
 {
     public class Company
     {
+
         public int Id { get; set; }
+
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
@@ -23,6 +26,9 @@ namespace timeManager3.Models
         public string Country { get; set; }
 
         public string OwnerId { get; set; }
+
+        public Guid InvKey { get; set; }
+
 
 
     }
