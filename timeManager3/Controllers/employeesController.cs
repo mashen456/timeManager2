@@ -53,6 +53,7 @@ namespace timeManager3.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 employee.employeId = User.Identity.GetUserId();
                 db.Employes.Add(employee);
                 db.SaveChanges();
@@ -60,6 +61,39 @@ namespace timeManager3.Controllers
             }
 
             ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name", employee.CompanyId);
+            return View(employee);
+        }
+        
+        // GET: employees/Create
+        public ActionResult JoinByCode()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult JoinByCode([Bind(Include = "Id,CompanyId,employeId,invKey")] employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+
+                employee.employeId = User.Identity.GetUserId();
+                foreach (Company company in db.Companies.ToList())
+                {
+                    if (company.InvKey.ToString() == employee.invKey.ToString())
+                    {
+                        employee.Company = company;
+                        employee.CompanyId = company.Id;
+                        db.Employes.Add(employee);
+                        db.SaveChanges();
+                    }
+
+                }
+
+                
+                return RedirectToAction("Index");
+            }
+
             return View(employee);
         }
 
